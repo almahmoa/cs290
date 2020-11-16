@@ -12,23 +12,23 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.get('/', function (req, res) {
-  var qParams = [];
-  for (var p in req.query){
-    qParams.push({'name':p,'value':req.query[p]})
+  var gParams = [];
+  for (var g in req.query){
+    gParams.push({'name':g,'value':req.query[g]})
   }
-  var context = {};
-  context.entries = qParams;
-  res.render('get', context);
+  var gContext = {};
+  gContext.entries = gParams;
+  res.render('get', gContext);
 });
 
 app.post('/', function (req, res) {
-  var qParams = [];
+  var pParams = [];
   for (var p in req.query){
-    qParams.push({'name':p,'value':req.query[p]})
+    pParams.push({'name':p,'value':req.query[p]})
   }
-  var context = {};
-  context.entries = qParams;
-  res.render('post', context);
+  var pContext = {};
+  pContext.entries = pParams;
+  res.render('post', pContext);
 });
 
 app.use(function(req,res){
