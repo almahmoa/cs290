@@ -23,13 +23,17 @@ app.get('/', function (req, res) {
 
 app.post('/', function (req, res) {
   var pParams = [];
-  for (var p in req.query){
-    pParams.push({'name':p,'value':req.query[p]})
-  }
+	for (var p in req.query){
+	pParams.push({'name':p,'value':req.query[p]})
+	}
+	for (var b in req.body) {
+	pParams.push({ "name": b, "value": req.body[b]});
+	}
   var pContext = {};
   pContext.entries = pParams;
   res.render('post', pContext);
 });
+
 
 app.use(function(req,res){
   res.status(404);
